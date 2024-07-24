@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: user-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/user_service
+    username: postgres
+    password:
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+server:
+  port: 0
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+  queue:
+    info-log: infoLogQueue
+    error-log: errorLogQueue
+
+logging:
+  level:
+    root: INFO
+    com.nbenliogludev: DEBUG
