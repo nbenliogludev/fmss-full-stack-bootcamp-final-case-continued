@@ -2,5 +2,12 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ad-package-service" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ad-service" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/api-gateway" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/eureka-server" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/log-aggregation-service" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/nextjs-frontend" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/user-service" vcs="Git" />
   </component>
 </project>

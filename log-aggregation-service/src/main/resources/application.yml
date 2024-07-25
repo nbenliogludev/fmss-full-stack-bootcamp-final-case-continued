@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: log-aggregation-service
+  main:
+    banner-mode: "off"
+  data:
+    mongodb:
+      uri: mongodb://root:root@localhost:27017/log_aggregation_service?authSource=admin
+  rabbitmq:
+    host: localhost
+    port: 5672  # Default port for RabbitMQ connections
+    username: guest
+    password: guest
+
+server:
+  port: 8083
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+rabbitmq:
+  queue:
+    info-log: infoLogQueue
+    error-log: errorLogQueue
+
+swagger:
+  api:
+    title: Application Logs API
+    description: You can use this API to get application error logs and info logs.
+    version: 1.0
+
+logging:
+  level:
+    root: INFO
+    com.nbenliogludev: DEBUG
