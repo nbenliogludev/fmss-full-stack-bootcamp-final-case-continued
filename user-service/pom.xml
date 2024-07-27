@@ -67,12 +67,6 @@
 			<version>${org.mapstruct.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct-processor</artifactId>
-			<version>${org.mapstruct.version}</version>
-		</dependency>
-
 		<!-- Feign Client -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

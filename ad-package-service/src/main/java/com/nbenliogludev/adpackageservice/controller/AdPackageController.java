@@ -24,7 +24,7 @@ import java.util.List;
  * @author nbenliogludev
  */
 @RestController
-@RequestMapping("/api/v1/adPackages")
+@RequestMapping("/api/v1/ad-packages")
 @RequiredArgsConstructor
 @Tag(name = "Ad Packages Controller", description = "Provides operations for managing ad ad packages")
 public class AdPackageController {
