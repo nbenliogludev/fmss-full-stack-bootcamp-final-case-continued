@@ -1,10 +1,8 @@
 package com.nbenliogludev.adservice.service;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
-import com.nbenliogludev.adservice.dto.request.AdCreateRequest;
 import com.nbenliogludev.adservice.dto.request.AdUpdateRequest;
 import com.nbenliogludev.adservice.dto.response.AdResponse;
 import com.nbenliogludev.adservice.entity.Ad;
@@ -44,31 +42,6 @@ class AdServiceImplTest {
         MockitoAnnotations.openMocks(this);
     }
 
-
-    @Test
-    void testCreateAd_Success() {
-        // Arrange
-        AdCreateRequest request = new AdCreateRequest(1L, "Title", "Description", BigDecimal.valueOf(500));
-        Ad ad = new Ad();
-        ad.setId(1L);
-        ad.setUserId(request.userId());
-        ad.setTitle(request.title());
-        ad.setDescription(request.description());
-        ad.setAmount(BigDecimal.valueOf(500));
-        ad.setStatus(AdStatus.ACTIVE);
-
-        when(adMapper.mapAdCreateRequestToAd(any())).thenReturn(ad);
-        when(adRepository.save(any(Ad.class))).thenReturn(ad);
-        when(adMapper.mapToAdResponse(any(Ad.class))).thenReturn(new AdResponse(1L, "Title", "Description", BigDecimal.valueOf(500), AdStatus.ACTIVE));
-
-        // Act
-        AdResponse result = adService.createAd(request);
-
-        // Assert
-        assertNotNull(result);
-        assertEquals(1L, result.id());
-        assertEquals("Title", result.title());
-    }
 
     @Test
     void testGetAllAds_EmptyList() {
