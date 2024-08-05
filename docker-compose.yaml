@@ -15,8 +15,8 @@ services:
     image: rabbitmq:3-management
     container_name: log_aggregation_rabbitmq
     ports:
-      - "5672:5672"  # RabbitMQ default port
-      - "15672:15672"  # RabbitMQ management web interface port
+      - "5672:5672"
+      - "15672:15672"
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
@@ -26,51 +26,57 @@ services:
   postgresql-user:
     image: postgres:latest
     ports:
-      - "5432:5432"
+      - "5433:5432"  # Changed host port to 5433
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: user_service
+
   postgresql-ad:
     image: postgres:latest
     ports:
-      - "5432:5432"
+      - "5434:5432"  # Changed host port to 5434
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: ad_service
+
   postgresql-ad-package:
     image: postgres:latest
     ports:
-      - "5432:5432"
+      - "5435:5432"  # Changed host port to 5435
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: ad_package_service
+
   postgresql-auth:
     image: postgres:latest
     ports:
-      - "5432:5432"
+      - "5436:5432"  # Changed host port to 5436
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: auth_service
+
   eureka-server:
     build: ./eureka-server
     ports:
       - "8761:8761"
+
   user-service:
-   build: ./user-service
-   depends_on:
-     - eureka-server
-     - mongodb
-     - rabbitmq
-     - postgresql-user
-   environment:
-     SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql-user:5432/user_service
-     SPRING_DATASOURCE_USERNAME: postgres
-     SPRING_DATASOURCE_PASSWORD: postgres
-     RABBITMQ_HOST: rabbitmq
+    build: ./user-service
+    depends_on:
+      - eureka-server
+      - mongodb
+      - rabbitmq
+      - postgresql-user
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql-user:5432/user_service
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      RABBITMQ_HOST: rabbitmq
+
   ad-service:
     build: ./ad-service
     depends_on:
@@ -82,6 +88,7 @@ services:
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
       RABBITMQ_HOST: rabbitmq
+
   ad-package-service:
     build: ./ad-package-service
     depends_on:
@@ -98,6 +105,7 @@ services:
     build: ./api-gateway
     depends_on:
       - eureka-server
+
   authentication-service:
     build: ./user-authentication
     depends_on:
@@ -109,6 +117,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql-auth:5432/auth_service
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+
   frontend:
     build: ./nextjs-frontend
     depends_on:
