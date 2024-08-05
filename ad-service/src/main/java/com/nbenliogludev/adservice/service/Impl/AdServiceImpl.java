@@ -32,25 +32,6 @@ public class AdServiceImpl implements AdService {
     private final AdPackageService adPackageService;
 
     @Override
-    public AdResponse createAd(AdCreateRequest request) {
-
-        ResponseEntity<RestResponse<AdPackageResponse>> response = adPackageService.getAdPackageByUserId(request.userId());
-        AdPackageResponse adPackage = response.getBody().getData();
-
-        if (adPackage.numberOfAds() == 0) {
-            throw new InvalidAdPackageException("User does not have any remaining ads in their package.");
-        }
-
-        AdPackageUpdateRequest adPackageUpdateRequest = new AdPackageUpdateRequest(adPackage.numberOfAds() - 1);
-        adPackageService.updateAdPackage(adPackage.id(), adPackageUpdateRequest);
-
-        Ad ad = adMapper.mapAdCreateRequestToAd(request);
-        ad = adRepository.save(ad);
-        appLogger.logInfo("AdServiceImpl", "Ad created with id: " + ad.getId());
-        return adMapper.mapToAdResponse(ad);
-    }
-
-    @Override
     public List<AdResponse> getAllAds() {
         appLogger.logInfo("AdServiceImpl", "Fetching all ads");
         List<Ad> ads = adRepository.findAll();

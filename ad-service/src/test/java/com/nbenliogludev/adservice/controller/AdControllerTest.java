@@ -48,8 +48,6 @@ public class AdControllerTest {
                 .andExpect(jsonPath("$.data[1].title").value(ad2.title()));
     }
 
-
-
     @Test
     public void createAd_shouldCreateAd_andReturnAd() throws Exception {
         Long userId = 1L;
