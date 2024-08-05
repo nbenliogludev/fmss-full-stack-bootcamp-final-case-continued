@@ -24,6 +24,14 @@ application:
       refresh-token:
         expiration: 604800000 # 7 days
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
 
 server:
   port: 0

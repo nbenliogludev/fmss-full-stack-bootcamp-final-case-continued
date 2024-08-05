@@ -26,7 +26,7 @@ services:
   postgresql-user:
     image: postgres:latest
     ports:
-      - "5433:5432"  # Changed host port to 5433
+      - "5433:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -35,7 +35,9 @@ services:
   postgresql-ad:
     image: postgres:latest
     ports:
-      - "5434:5432"  # Changed host port to 5434
+      - "5434:5432"
+    networks:
+      - emlak-burada-microservices-network
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -44,7 +46,9 @@ services:
   postgresql-ad-package:
     image: postgres:latest
     ports:
-      - "5435:5432"  # Changed host port to 5435
+      - "5435:5432"
+    networks:
+      - emlak-burada-microservices-network
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -53,7 +57,9 @@ services:
   postgresql-auth:
     image: postgres:latest
     ports:
-      - "5436:5432"  # Changed host port to 5436
+      - "5436:5432"
+    networks:
+      - emlak-burada-microservices-network
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -63,6 +69,13 @@ services:
     build: ./eureka-server
     ports:
       - "8761:8761"
+    networks:
+      - emlak-burada-microservices-network
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8761" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   user-service:
     build: ./user-service
@@ -71,6 +84,8 @@ services:
       - mongodb
       - rabbitmq
       - postgresql-user
+    networks:
+      - emlak-burada-microservices-network
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql-user:5432/user_service
       SPRING_DATASOURCE_USERNAME: postgres
@@ -83,6 +98,8 @@ services:
       - eureka-server
       - rabbitmq
       - postgresql-ad
+    networks:
+      - emlak-burada-microservices-network
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql-ad:5432/ad_service
       SPRING_DATASOURCE_USERNAME: postgres
@@ -95,6 +112,8 @@ services:
       - eureka-server
       - rabbitmq
       - postgresql-ad-package
+    networks:
+      - emlak-burada-microservices-network
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql-ad-package:5432/ad_package_service
       SPRING_DATASOURCE_USERNAME: postgres
@@ -103,6 +122,8 @@ services:
 
   api-gateway:
     build: ./api-gateway
+    networks:
+      - emlak-burada-microservices-network
     depends_on:
       - eureka-server
 
@@ -130,3 +151,7 @@ services:
 volumes:
   mongo-data:
   rabbitmq-data:
+
+networks:
+  emlak-burada-microservices-network:
+    driver: bridge

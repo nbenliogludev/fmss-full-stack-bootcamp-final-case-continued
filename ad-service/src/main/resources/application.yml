@@ -12,8 +12,11 @@ spring:
     show-sql: true
 server:
   port: 0
+
 eureka:
   client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
     register-with-eureka: true
     fetch-registry: true
   instance:
