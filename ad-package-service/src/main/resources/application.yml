@@ -4,9 +4,9 @@ spring:
     name: ad-package-service
 
   datasource:
-    url: jdbc:postgresql://localhost:5435/ad_package_service
+    url: jdbc:postgresql://localhost:5432/ad_package_service
     username: postgres
-    password: postgres
+    password:
     driver-class-name: org.postgresql.Driver
 
   jpa:
