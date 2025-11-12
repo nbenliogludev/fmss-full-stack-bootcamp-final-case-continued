@@ -3,7 +3,6 @@ package com.nbenliogludev.adservice.service.Impl;
 import com.nbenliogludev.adservice.client.adPackage.dto.request.AdPackageUpdateRequest;
 import com.nbenliogludev.adservice.client.adPackage.service.AdPackageService;
 import com.nbenliogludev.adservice.dto.request.AdUpdateRequest;
-import com.nbenliogludev.adservice.enums.AdStatus;
 import com.nbenliogludev.adservice.exception.AdNotFoundException;
 import com.nbenliogludev.adservice.exception.InvalidAdPackageException;
 import com.nbenliogludev.adservice.mapper.AdMapper;

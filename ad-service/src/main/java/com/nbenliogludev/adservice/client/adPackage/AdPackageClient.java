@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(value = "ad-package-service")
 public interface AdPackageClient {
 
-    @GetMapping("/api/v1/adPackages/user/{userId}")
+    @GetMapping("/api/v1/ad-packages/user/{userId}")
     ResponseEntity<RestResponse<AdPackageResponse>> getAdPackageByUserId(@PathVariable Long userId);
 
-    @PutMapping("/api/v1/adPackages/{id}")
+    @PutMapping("/api/v1/ad-packages/{id}")
     ResponseEntity<RestResponse<AdPackageResponse>> updateAdPackage(@PathVariable Long id, @RequestBody @Valid AdPackageUpdateRequest request);
 }

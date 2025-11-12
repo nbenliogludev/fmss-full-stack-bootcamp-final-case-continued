@@ -1,28 +1,28 @@
 
 # Final Projesi - FMSS Bilişim Teknoloji Fullstack Web Bootcamp
 
-Bu proje, FMSS Bilişim Teknoloji Fullstack Web Bootcamp'inin final projesidir. Mikroservis mimarisi uygulanarak geliştirilmiştir.
+This project is the final project of the FMSS Bilişim Teknoloji Fullstack Web Bootcamp. It was developed using a microservice architecture.
 
 Website: [nbenlioglu.dev](https://www.nbenlioglu.dev/)<br>
 LinkedIn: [Nikolay Benlioglu](https://www.linkedin.com/in/nikolay-benlioglu/)<br>
 GitHub: [nbenliogludev](https://github.com/nbenliogludev)<br>
 Email: [nikbenlioglu@gmail.com](mailto:nikbenlioglu@gmail.com)
 
-## Kısaca Bazı Özellikler
+## Key Features
 
-- Her temel servisin kendi veritabanı bulunuyor.
-- RabbitMQ ile asenkron mesajlaşma sağlandı.
-- Loglar için MongoDB kullanılıyor.
-- Eureka service discovery yapısı hazırlandı.
-- Next.js ile oluşturulmuş basit bir önyüze sahip.
-- Postman üzerinden denenebilir.
+- Each core service has its own database.
+- Asynchronous messaging is handled via RabbitMQ.
+- MongoDB is used for logs.
+- Eureka is used for service discovery.
+- A simple frontend is built with Next.js.
+- The APIs can be tested via Postman.
 
-## Postman ile deneyin
-API adreslerini Postman ile deneyebilirsiniz: [**Postman API** 🚀](https://documenter.getpostman.com/view/5602393/2sA3kVj1Xz)
+## Try it with Postman
+You can try the API endpoints with Postman: [**Postman API** 🚀](https://documenter.getpostman.com/view/5602393/2sA3kVj1Xz)
 
-## Mikroservisler
+## Microservices
 
-Aşağıda projeye ait mikroservislerin listesi bulunmaktadır.<br>
+Below is the list of microservices in the project.<br>
 <br>📦 User Service
 <br>📦 Authentication Service
 <br>📦 Ad Service
@@ -32,15 +32,15 @@ Aşağıda projeye ait mikroservislerin listesi bulunmaktadır.<br>
 <br>🌐 Eureka Service Discovery
 
 
-## Proje Şeması
+## Project Diagram
 
 ![Proje Diyagramı](images/fmss-project-diagram.png)
 
 # Next.js
 
-Next.js projesi, kullanıcıların ilan oluşturma, düzenleme, silme ve detaylarına ulaşma işlemlerini yapabilmesini sağlar.
+The Next.js project allows users to create, edit, delete, and view details of ads.
 
-## Kullandığım Teknolojiler
+## Technologies Used
 
 - **Next.js**
 - **TypeScript**
@@ -48,118 +48,117 @@ Next.js projesi, kullanıcıların ilan oluşturma, düzenleme, silme ve detayla
 - **nextAuth**
 - **Tailwind CSS**
 
-## Önyüzü çalıştırma adımları
+## Steps to Run the Frontend
 
-1. Terminalinizi açın ve projenin ana dizinine gidin.
-2. `cd nextjs-frontend` komutunu çalıştırarak önyüz projesinin dizinine gidin.
-3. `npm install` komutunu çalıştırın gerekli paketlerin yüklenmesini bekleyin.
-4. `npm run dev` komutunu çalıştırarak önyüz projesini başlatın.
-5. Tarayıcınızda `http://localhost:3000` adresine gidin.
+1. Open your terminal and go to the root directory of the project.
+2. Run `cd nextjs-frontend` to go into the frontend project directory.
+3. Run `npm install` and wait for the required packages to be installed.
+4. Run `npm run dev`to start the frontend project.
+5. In your browser, go to http://localhost:3000.
+6. 
+If you’ve reached this point, great! You can now use the application. 🎉🎉🎉
 
-Bu noktaya geldiyseniz harika! Artık projeyi kullanabilirsiniz. 🎉🎉🎉
-
-Dokümanın ilerleyen kısımlarında API dokümantasyonu ve servis açıklamaları yer alıyor.
+In the following sections, you can find API documentation and service descriptions.
 
 ## UserService [User Service]
 
-Kullanıcı servisi, kullanıcı yönetimi ile ilgilenir. Kullanıcı oluşturma ve silme ve güncelleme işlemlerini sağlar.
+The User Service is responsible for user management. It allows creating, deleting, and updating users.
 
 ### API Adresleri
 
-| Method | Adres                | Açıklama                   |
-|--------|----------------------|----------------------------|
-| `GET`  | `api/v1/users`       | Kullanıcıları getir        |
-| `GET`  | `api/v1/users/{id}`  | Kullanıcı id'si ile getir  |
-| `POST` | `api/v1/users`       | Yeni bir kullanıcı oluştur |
-| `PUT`  | `api/v1/users/{id}`  | Kullanıcıyı güncelle       |
-| `DELETE`| `api/v1/users/{id}`  | Kullanıcıyı sil            |
+| Method | Adres                | Açıklama          |
+|--------|----------------------|-------------------|
+| `GET`  | `api/v1/users`       | Get all users     |
+| `GET`  | `api/v1/users/{id}`  | Get user by ID    |
+| `POST` | `api/v1/users`       | Create a new user |
+| `PUT`  | `api/v1/users/{id}`  | Update a user     |
+| `DELETE`| `api/v1/users/{id}`  | Delete a user     |
 
 
 ## AuthenticationService 
 
-AuthenticationService, JWT kullanarak kullanıcı kimlik doğrulama işlemlerini yönetir. Kullanıcı kayıt, giriş, ve çıkış işlemlerini sağlar.
+AuthenticationService manages user authentication using JWT. It provides user registration, login, and logout operations.
+
+### API Endpoints
+
+| Method | Adres                      | Açıklama                      |
+|--------|----------------------------|-------------------------------|
+| `POST` | `api/v1/auth/register`     | Create a new user account     |
+| `POST` | `api/v1/auth/authenticate` | Authenticate a user (login)   |
+
+
+
+# Ad Service - [Ad Service](ad-service)
+
+The Ad Service allows users to create, update, delete, and list ads.
 
 ### API Adresleri
 
-| Method | Adres                      | Açıklama                                |
-|--------|----------------------------|-----------------------------------------|
-| `POST` | `api/v1/auth/register`     | Yeni bir kullanıcı kaydı oluşturur      |
-| `POST` | `api/v1/auth/authenticate` | Kullanıcı kimlik doğrulama işlemi yapar |
+| Method   | Adres                   | Açıklama              |
+|----------|-------------------------|-----------------------|
+| `GET`    | `/api/v1/ads`           | Get all ads           |
+| `GET`    | `/api/v1/ads/{id}`      | Get ad by ID          |
+| `GET`    | `/api/v1/ads/user/{id}` | Get ads by user ID    |
+| `POST`   | `/api/v1/ads`           | Create a new ad       |
+| `PUT`    | `/api/v1/ads/{id}`      | Update an existing ad |
+| `DELETE` | `/api/v1/ads/{id}`      | Delete an existing ad |
 
 
 
-# İlan Servisi - [Ad Service](ad-service)
+# Package Service - [Ad Package Service](ad-package-service)
 
-İlan Servisi, kullanıcıların ilan oluşturma, güncelleme, silme ve listeleme işlemlerini yapabilmesini sağlar
+The Package Service manages users’ ad publishing rights. Users can purchase packages that grant them the right to publish a certain number of ads for a certain period. The Package Service allows creating, updating, deleting, and viewing packages.
+``
+### API Endpoints
 
-### API Adresleri
-
-| Method   | Adres                   | Açıklama                   |
-|----------|-------------------------|----------------------------|
-| `GET`    | `/api/v1/ads`           | Tüm ilanları getir         |
-| `GET`    | `/api/v1/ads/{id}`      | İlanı id'si ile getir      |
-| `GET`    | `/api/v1/ads/user/{id}` | İlanı user id'si ile getir |
-| `POST`   | `/api/v1/ads`           | Yeni bir ilan oluştur      |
-| `PUT`    | `/api/v1/ads/{id}`      | Mevcut bir ilanı güncelle  |
-| `DELETE` | `/api/v1/ads/{id}`      | Mevcut bir ilanı sil       |
-
-
-
-# Paket Servisi - [Ad Package Service](ad-package-service)
-
-Paket Servisi, kullanıcıların ilan yayınlama haklarını yönetir. Kullanıcılar, belirli bir süre ve sayıda ilan yayınlama hakkı sunan paketler satın alabilirler. Paket Servisi, kullanıcıların paketleri oluşturma, güncelleme, silme ve görüntüleme işlemlerini sağlar.
-
-### API Adresleri
-
-| Method   | Adres                          | Açıklama                    |
-|----------|--------------------------------|-----------------------------|
-| `GET`    | `/api/v1/adPackages`           | Tüm paketleri getir         |
-| `GET`    | `/api/v1/adPackages/{id}`      | Paketi id'si ile getir      |
-| `GET`    | `/api/v1/adPackages/user/{id}` | Paketi user id'si ile getir |
-| `POST`   | `/api/v1/adPackages`           | Yeni bir paket oluştur      |
-| `PUT`    | `/api/v1/adPackages/{id}`      | Mevcut bir paketi güncelle  |
-| `DELETE` | `/api/v1/adPackages/{id}`      | Mevcut bir paketi sil       |
+| Method   | Adres                          | Açıklama                   |
+|----------|--------------------------------|----------------------------|
+| `GET`    | `/api/v1/adPackages`           | Get all packages           |
+| `GET`    | `/api/v1/adPackages/{id}`      | Get package by ID          |
+| `GET`    | `/api/v1/adPackages/user/{id}` | Get packages by user ID    |
+| `POST`   | `/api/v1/adPackages`           | Create a new package       |
+| `PUT`    | `/api/v1/adPackages/{id}`      | Update an existing package |
+| `DELETE` | `/api/v1/adPackages/{id}`      | Delete an existing package |``
 
 
-# Log Toplama Servisi - [Log Aggregation Service](log-aggregation-service)
+# Log Aggregation Service - [Log Aggregation Service](log-aggregation-service)
 
-Log toplama servisi, diğer mikroservislerden üretilen hata ve bilgi loglarını toplar ve MongoDB veritabanına kaydeder.
-Bunlara erişmek için bir API sunar. MongoDB veritabanınızı yönetmek için projede Mongo Express de bulunuyor.
+The Log Aggregation Service collects info and error logs produced by other microservices and stores them in a MongoDB database. It exposes an API to access these logs. Mongo Express is also included in the project to manage your MongoDB database.
 
-### API Adresleri
+### API Endpoints
 
-| Method | Adres                                      | Açıklama              |
-|--------|--------------------------------------------|-----------------------|
-| `GET`  | `log-aggregation-service/api/v1/info-logs` | Bilgi loglarını getir |
-| `GET`  | `log-aggregation-service/api/v1/error-logs`| Hata loglarını getir  |
+| Method | Adres                                      | Açıklama        |
+|--------|--------------------------------------------|-----------------|
+| `GET`  | `log-aggregation-service/api/v1/info-logs` | Get info logs   |
+| `GET`  | `log-aggregation-service/api/v1/error-logs`| Get error logs  |
 
 # API Gateway - [API Gateway](api-gateway)
 
-API Gateway, diğer mikroservislerin API'lerini tek bir noktadan erişilebilir hale getirir. Ayrıca servislerin bulunduğu adresleri Eureka üzerinden alır.
+The API Gateway exposes the APIs of other microservices through a single entry point. It also retrieves the service locations from Eureka.
 
 # Eureka Sunucusu - [Eureka Server](eureka-server)
 
-Eureka sunucusu, diğer mikroservislerin kayıt olduğu ve bulunduğu adresleri tutan bir servistir. API Gateway, Eureka üzerinden diğer servislerin adreslerini alır.
+The Eureka Server is the service where other microservices register themselves and where their addresses are stored. The API Gateway obtains the addresses of other services via Eureka.
 
-## Projenin Önyüzü
+## Application UI
 
-### "Discover all" Sayfası
-Bu sayfasda, var olan tüm ilanları keşfedebilecekleri bir liste bulunur.
+### "Discover all" Page
+On this page, users can browse a list of all existing ads.
 
 ![Discover all ads](images/discover.png)
 
-### Benim İlanlarım Sayfası
-Bu sayfada, kullanıcının oluşturduğu ilanlar listelenmektedir.
+### “My Ads” Page
+On this page, the ads created by the current user are listed.
 
 ![Discover all ads](images/my_ads.png)
 
-### İlan Oluşturma
-Bu sayfada, kullanıcılar yeni bir ilan oluşturmak için gerekli formu doldurabilirler.
+### Create Ad
+On this page, users can fill out a form to create a new ad.
 
 ![Discover all ads](images/create_ad.png)
 
-### Paketler Sayfası
-Bu sayfada, kullanıcılar ilan paketlerini satın alabilirler. Paketler, belirli bir süre ve sayıda ilan yayınlama hakkı sunar.
+### Packages Page
+On this page, users can purchase ad packages. Packages grant the right to publish a certain number of ads for a certain period.
 
 ![Discover all ads](images/ad_package.png)
 

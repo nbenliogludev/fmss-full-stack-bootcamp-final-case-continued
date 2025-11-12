@@ -43,4 +43,11 @@ public class AuthenticationController {
     ) throws IOException {
         service.refreshToken(request, response);
     }
+
+    @PostMapping("/validate-token")
+    public ResponseEntity<AuthenticationResponse> validateToken(
+            @RequestBody AuthenticationRequest request
+    ) {
+        return ResponseEntity.ok(service.authenticate(request));
+    }
 }

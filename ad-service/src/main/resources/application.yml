@@ -33,3 +33,9 @@ logging:
   level:
     root: INFO
     com.nbenliogludev: DEBUG
+
+swagger:
+  api:
+    title: Ad API Documentation.
+    description: This is an API for Ad management.
+    version: 1.0.0

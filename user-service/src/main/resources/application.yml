@@ -39,6 +39,6 @@ logging:
 
 swagger:
   api:
-    title: Your API Title
-    description: Your API Description
+    title: User API Documentation.
+    description: This is an API for User management.
     version: 1.0.0

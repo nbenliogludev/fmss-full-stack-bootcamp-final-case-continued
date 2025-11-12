@@ -30,13 +30,9 @@ public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
     @ExceptionHandler
     public ResponseEntity<Object> handleAllExceptions(RuntimeException exception, WebRequest request) {
 
-
         RestResponse<GeneralErrorMessage> restResponse = getGeneralErrorMessageRestResponse(exception, request);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(restResponse);
     }
-
-
-
 
     @ExceptionHandler(AdNotFoundException.class)
     public ResponseEntity<Object> handleAdNotFoundException(AdNotFoundException exception,

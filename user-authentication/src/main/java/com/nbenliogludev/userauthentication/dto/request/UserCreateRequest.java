@@ -10,7 +10,7 @@ import org.hibernate.validator.constraints.Length;
 public record UserCreateRequest (
 
         @NotBlank(message = "Name is required.")
-        @Length(max = 80, message = "Name can not be longer than 80 characters.")
+        @Length(min = 2, max = 100, message = "Name must be between 2 and 100 characters.")
         String name,
 
         @NotBlank(message = "Surname is required.")

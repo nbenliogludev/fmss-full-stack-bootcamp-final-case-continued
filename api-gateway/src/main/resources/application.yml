@@ -25,7 +25,7 @@ spring:
         - id: ad-package-service
           uri: lb://AD-PACKAGE-SERVICE
           predicates:
-            - Path=/api/v1/adPackages/**
+            - Path=/api/v1/ad-packages/**
 
 server:
   port: 8080
