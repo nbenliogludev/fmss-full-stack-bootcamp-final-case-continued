@@ -8,7 +8,7 @@ spring:
       uri: mongodb://root:root@localhost:27017/log_aggregation_service?authSource=admin
   rabbitmq:
     host: localhost
-    port: 5672  # Default port for RabbitMQ connections
+    port: 5672
     username: guest
     password: guest
 

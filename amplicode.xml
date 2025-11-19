@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AmplicodePersistenceUnitSettings">
+    <persistence-units>
+      <persistence-unit moduleName="ad-package-service" name="Default">
+        <packages>
+          <package value="com.nbenliogludev.adpackageservice" />
+        </packages>
+      </persistence-unit>
+      <persistence-unit moduleName="ad-service" name="Default">
+        <packages>
+          <package value="com.nbenliogludev.adservice" />
+        </packages>
+      </persistence-unit>
+      <persistence-unit moduleName="log-aggregation-service" name="Default">
+        <packages>
+          <package value="com.nbenliogludev.logaggregationservice" />
+        </packages>
+      </persistence-unit>
+      <persistence-unit moduleName="user-authentication" name="Default">
+        <packages>
+          <package value="com.nbenliogludev.userauthentication" />
+        </packages>
+      </persistence-unit>
+      <persistence-unit moduleName="user-service" name="Default">
+        <packages>
+          <package value="com.nbenliogludev.userservice" />
+        </packages>
+      </persistence-unit>
+    </persistence-units>
+  </component>
+</project>
