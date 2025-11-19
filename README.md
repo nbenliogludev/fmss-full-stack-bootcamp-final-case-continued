@@ -1,7 +1,7 @@
 
-# Final Projesi - FMSS Bilişim Teknoloji Fullstack Web Bootcamp
+# Final project - FMSS Bilisim Teknoloji Fullstack Web Bootcamp
 
-This project is the final project of the FMSS Bilişim Teknoloji Fullstack Web Bootcamp. It was developed using a microservice architecture.
+This project is the final project of the FMSS Bilisim Teknoloji Fullstack Web Bootcamp. It was developed using a microservice architecture.
 
 Website: [nbenlioglu.dev](https://www.nbenlioglu.dev/)<br>
 LinkedIn: [Nikolay Benlioglu](https://www.linkedin.com/in/nikolay-benlioglu/)<br>
