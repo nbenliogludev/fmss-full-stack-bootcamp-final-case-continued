@@ -1,7 +1,7 @@
 
-# Final Projesi - FMSS Bilişim Teknoloji Fullstack Web Bootcamp
+# Final project - FMSS Bilisim Teknoloji Fullstack Web Bootcamp
 
-This project is the final project of the FMSS Bilişim Teknoloji Fullstack Web Bootcamp. It was developed using a microservice architecture.
+This project is the final project of the FMSS Bilisim Teknoloji Fullstack Web Bootcamp. It was developed using a microservice architecture.
 
 Website: [nbenlioglu.dev](https://www.nbenlioglu.dev/)<br>
 LinkedIn: [Nikolay Benlioglu](https://www.linkedin.com/in/nikolay-benlioglu/)<br>
@@ -48,19 +48,13 @@ The Next.js project allows users to create, edit, delete, and view details of ad
 - **nextAuth**
 - **Tailwind CSS**
 
-## Steps to Run the Frontend
+## Let's start the project
 
-1. Open your terminal and go to the root directory of the project.
-2. Run `cd nextjs-frontend` to go into the frontend project directory.
-3. Run `npm install` and wait for the required packages to be installed.
-4. Run `npm run dev`to start the frontend project.
-5. In your browser, go to http://localhost:3000.
-6. 
-If you’ve reached this point, great! You can now use the application. 🎉🎉🎉
+1. Open your terminal and go to the project's root directory.
+2. Run `docker-compose up -d`.
+3. Go to http://localhost:3000/discover in your browser.
 
-In the following sections, you can find API documentation and service descriptions.
-
-## UserService [User Service]
+## User Service - [User Service](user-service)
 
 The User Service is responsible for user management. It allows creating, deleting, and updating users.
 
@@ -75,7 +69,7 @@ The User Service is responsible for user management. It allows creating, deletin
 | `DELETE`| `api/v1/users/{id}`  | Delete a user     |
 
 
-## AuthenticationService 
+## Authentication Service - [Authentication Service](user-authentication)
 
 AuthenticationService manages user authentication using JWT. It provides user registration, login, and logout operations.
 
@@ -88,11 +82,11 @@ AuthenticationService manages user authentication using JWT. It provides user re
 
 
 
-# Ad Service - [Ad Service](ad-service)
+# Package Service - [Ad Service](ad-service)
 
 The Ad Service allows users to create, update, delete, and list ads.
 
-### API Adresleri
+### API Endpoints
 
 | Method   | Adres                   | Açıklama              |
 |----------|-------------------------|-----------------------|
