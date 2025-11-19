@@ -72,7 +72,6 @@
       <change afterPath="$PROJECT_DIR$/ad-service/src/test/java/com/nbenliogludev/adservice/AdServiceApplicationTests.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ad-service/src/test/java/com/nbenliogludev/adservice/controller/AdControllerTest.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ad-service/src/test/java/com/nbenliogludev/adservice/service/AdServiceImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/amplicode.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/api-gateway/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/api-gateway/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/api-gateway/Dockerfile" afterDir="false" />
@@ -85,7 +84,6 @@
       <change afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/nbenliogludev/apigateway/config/CorsConfig.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/api-gateway/src/test/java/com/nbenliogludev/apigateway/ApiGatewayApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/eureka-server/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/eureka-server/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/eureka-server/Dockerfile" afterDir="false" />
@@ -95,8 +93,6 @@
       <change afterPath="$PROJECT_DIR$/eureka-server/src/main/java/com/nbenliogludev/eurekaserver/EurekaServerApplication.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/eureka-server/src/main/resources/application.yml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/eureka-server/src/test/java/com/nbenliogludev/eurekaserver/EurekaServerApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/user-service/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/user-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/user-service/Dockerfile" afterDir="false" />
@@ -127,22 +123,8 @@
       <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/nbenliogludev/userservice/util/AppLogger.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.yml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/user-service/src/test/java/com/nbenliogludev/userservice/UserServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/amplicode-jpa.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/amplicode-settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fmss-full-stack-bootcamp-final-case-continued.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-authentication/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/user-authentication/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-authentication/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/user-authentication/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +140,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/user-service" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -219,7 +201,7 @@
     &quot;Spring Boot.UserAuthenticationApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.UserServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/docs&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/nikolay/fmss-full-stack-bootcamp-final-case-continued/nextjs-frontend/app&quot;,
@@ -518,7 +500,7 @@
       <workItem from="1762960990272" duration="2907000" />
       <workItem from="1763005253765" duration="2547000" />
       <workItem from="1763137747880" duration="3066000" />
-      <workItem from="1763154580007" duration="42030000" />
+      <workItem from="1763154580007" duration="44413000" />
     </task>
     <servers />
   </component>
