@@ -55,6 +55,7 @@ The Next.js project allows users to create, edit, delete, and view details of ad
 2. Run `docker-compose up -d`.
 3. Go to http://localhost:3000/discover in your browser.
 
+
 ## User Service - [User Service](user-service)
 
 The User Service is responsible for user management. It allows creating, deleting, and updating users.
