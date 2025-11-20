@@ -18,6 +18,7 @@ Email: [nikbenlioglu@gmail.com](mailto:nikbenlioglu@gmail.com)
 - The APIs can be tested via Postman.
 
 ## Try it with Postman
+
 You can try the API endpoints with Postman: [**Postman API** 🚀](https://documenter.getpostman.com/view/5602393/2sA3kVj1Xz)
 
 ## Microservices
@@ -48,7 +49,7 @@ The Next.js project allows users to create, edit, delete, and view details of ad
 - **nextAuth**
 - **Tailwind CSS**
 
-## Let's start the project
+## Start the Project with Docker
 
 1. Open your terminal and go to the project's root directory.
 2. Run `docker-compose up -d`.
@@ -82,7 +83,7 @@ AuthenticationService manages user authentication using JWT. It provides user re
 
 
 
-# Package Service - [Ad Service](ad-service)
+## Package Service - [Ad Service](ad-service)
 
 The Ad Service allows users to create, update, delete, and list ads.
 
@@ -96,8 +97,6 @@ The Ad Service allows users to create, update, delete, and list ads.
 | `POST`   | `/api/v1/ads`           | Create a new ad       |
 | `PUT`    | `/api/v1/ads/{id}`      | Update an existing ad |
 | `DELETE` | `/api/v1/ads/{id}`      | Delete an existing ad |
-
-
 
 # Package Service - [Ad Package Service](ad-package-service)
 
@@ -115,7 +114,7 @@ The Package Service manages users’ ad publishing rights. Users can purchase pa
 | `DELETE` | `/api/v1/adPackages/{id}`      | Delete an existing package |``
 
 
-# Log Aggregation Service - [Log Aggregation Service](log-aggregation-service)
+## Log Aggregation Service - [Log Aggregation Service](log-aggregation-service)
 
 The Log Aggregation Service collects info and error logs produced by other microservices and stores them in a MongoDB database. It exposes an API to access these logs. Mongo Express is also included in the project to manage your MongoDB database.
 
@@ -126,7 +125,7 @@ The Log Aggregation Service collects info and error logs produced by other micro
 | `GET`  | `log-aggregation-service/api/v1/info-logs` | Get info logs   |
 | `GET`  | `log-aggregation-service/api/v1/error-logs`| Get error logs  |
 
-# API Gateway - [API Gateway](api-gateway)
+## API Gateway - [API Gateway](api-gateway)
 
 The API Gateway exposes the APIs of other microservices through a single entry point. It also retrieves the service locations from Eureka.
 
