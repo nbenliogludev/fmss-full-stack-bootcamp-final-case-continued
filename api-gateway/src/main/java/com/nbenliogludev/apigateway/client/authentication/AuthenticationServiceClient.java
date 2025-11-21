@@ -4,7 +4,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 
-@FeignClient(name = "authentication-service", url = "lb://AUTHENTICATION-SERVICE")
+@FeignClient(name = "authentication-service")
 public interface AuthenticationServiceClient {
 
     @GetMapping("/api/v1/auth/validate")

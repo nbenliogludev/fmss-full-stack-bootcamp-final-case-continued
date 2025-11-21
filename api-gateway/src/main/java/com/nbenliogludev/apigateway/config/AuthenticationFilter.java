@@ -1,7 +1,7 @@
 package com.nbenliogludev.apigateway.config;
 
 import com.nbenliogludev.apigateway.client.authentication.AuthenticationServiceClient;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -14,8 +14,11 @@ import reactor.core.publisher.Mono;
 @Component
 public class AuthenticationFilter implements GlobalFilter, Ordered {
 
-    @Autowired
-    private AuthenticationServiceClient authenticationServiceClient;
+    private final AuthenticationServiceClient authenticationServiceClient;
+
+    public AuthenticationFilter(@Lazy AuthenticationServiceClient authenticationServiceClient) {
+        this.authenticationServiceClient = authenticationServiceClient;
+    }
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -27,9 +30,8 @@ public class AuthenticationFilter implements GlobalFilter, Ordered {
             return exchange.getResponse().setComplete();
         }
 
-        String token = authHeader.substring(7); // Extract the token part
+        String token = authHeader.substring(7);
 
-        // Validate the token by calling the authentication service
         boolean isValid = authenticationServiceClient.validateToken(authHeader);
 
         if (!isValid) {
@@ -42,6 +44,6 @@ public class AuthenticationFilter implements GlobalFilter, Ordered {
 
     @Override
     public int getOrder() {
-        return -1; // Ensure it runs before other filters
+        return -1;
     }
 }
