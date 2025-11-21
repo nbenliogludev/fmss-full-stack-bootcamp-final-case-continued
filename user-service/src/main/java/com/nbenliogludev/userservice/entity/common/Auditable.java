@@ -3,6 +3,8 @@ package com.nbenliogludev.userservice.entity.common;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PrePersist;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
@@ -10,6 +12,8 @@ import java.time.LocalDateTime;
  * @author nbenliogludev
  */
 @MappedSuperclass
+@Getter
+@Setter
 public abstract class Auditable {
 
     @Column(name = "created_at", nullable = false)

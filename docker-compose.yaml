@@ -1,17 +1,59 @@
 version: "3.9"
 
 services:
-  postgres:
+  user-auth-db:
     image: postgres:16-alpine
-    container_name: postgres
+    container_name: user-auth-db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: main
+      POSTGRES_DB: user_auth_db
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - user_auth_data:/var/lib/postgresql/data
+    networks:
+      - ms-network
+
+  user-service-db:
+    image: postgres:16-alpine
+    container_name: user-service-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: user_service_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - user_service_data:/var/lib/postgresql/data
+    networks:
+      - ms-network
+
+  ad-service-db:
+    image: postgres:16-alpine
+    container_name: ad-service-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ad_service_db
+    ports:
+      - "5435:5432"
+    volumes:
+      - ad_service_data:/var/lib/postgresql/data
+    networks:
+      - ms-network
+
+  ad-package-db:
+    image: postgres:16-alpine
+    container_name: ad-package-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ad_package_db
+    ports:
+      - "5436:5432"
+    volumes:
+      - ad_package_data:/var/lib/postgresql/data
     networks:
       - ms-network
 
@@ -32,8 +74,8 @@ services:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
     ports:
-      - "5672:5672"    # AMQP
-      - "15672:15672"  # management UI
+      - "5672:5672"
+      - "15672:15672"
     networks:
       - ms-network
 
@@ -58,7 +100,7 @@ services:
       dockerfile: Dockerfile
     container_name: api-gateway
     ports:
-      - "8080:8080"  # main entrypoint
+      - "8080:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
@@ -74,22 +116,21 @@ services:
     container_name: user-authentication
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/user_auth_db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://user-auth-db:5432/user_auth_db
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
       - SPRING_RABBITMQ_HOST=rabbitmq
       - SPRING_RABBITMQ_PORT=5672
       - SPRING_RABBITMQ_USERNAME=guest
       - SPRING_RABBITMQ_PASSWORD=guest
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
     depends_on:
-      - postgres
+      - user-auth-db
       - rabbitmq
       - eureka-server
     networks:
       - ms-network
 
-  # === User Service ===
   user-service:
     build:
       context: ./user-service
@@ -97,16 +138,16 @@ services:
     container_name: user-service
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/user_service_db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://user-service-db:5432/user_service_db
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
       - SPRING_RABBITMQ_HOST=rabbitmq
       - SPRING_RABBITMQ_PORT=5672
       - SPRING_RABBITMQ_USERNAME=guest
       - SPRING_RABBITMQ_PASSWORD=guest
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
     depends_on:
-      - postgres
+      - user-service-db
       - rabbitmq
       - eureka-server
     networks:
@@ -119,16 +160,16 @@ services:
     container_name: ad-service
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/ad_service_db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ad-service-db:5432/ad_service_db
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
       - SPRING_RABBITMQ_HOST=rabbitmq
       - SPRING_RABBITMQ_PORT=5672
       - SPRING_RABBITMQ_USERNAME=guest
       - SPRING_RABBITMQ_PASSWORD=guest
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
     depends_on:
-      - postgres
+      - ad-service-db
       - rabbitmq
       - eureka-server
     networks:
@@ -141,53 +182,18 @@ services:
     container_name: ad-package-service
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/ad_package_db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ad-package-db:5432/ad_package_db
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
       - SPRING_RABBITMQ_HOST=rabbitmq
       - SPRING_RABBITMQ_PORT=5672
       - SPRING_RABBITMQ_USERNAME=guest
       - SPRING_RABBITMQ_PASSWORD=guest
-    depends_on:
-      - postgres
-      - rabbitmq
-      - eureka-server
-    networks:
-      - ms-network
-
-  log-aggregation-service:
-    build:
-      context: ./log-aggregation-service
-      dockerfile: Dockerfile
-    container_name: log-aggregation-service
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
-      - SPRING_RABBITMQ_HOST=rabbitmq
-      - SPRING_RABBITMQ_PORT=5672
-      - SPRING_RABBITMQ_USERNAME=guest
-      - SPRING_RABBITMQ_PASSWORD=guest
-      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/logsdb
     depends_on:
+      - ad-package-db
       - rabbitmq
-      - mongo
       - eureka-server
-    networks:
-      - ms-network
-
-  next-frontend:
-    build:
-      context: ./nextjs-frontend
-      dockerfile: Dockerfile
-    container_name: next-frontend
-    environment:
-      - NODE_ENV=production
-      - API_BASE_URL=http://api-gateway:8080
-    depends_on:
-      - api-gateway
-    ports:
-      - "3000:3000"
     networks:
       - ms-network
 
@@ -195,5 +201,8 @@ networks:
   ms-network:
 
 volumes:
-  postgres_data:
+  user_auth_data:
+  user_service_data:
+  ad_service_data:
+  ad_package_data:
   mongo_data:
