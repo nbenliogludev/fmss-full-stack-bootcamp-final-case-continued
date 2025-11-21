@@ -109,21 +109,6 @@ services:
     networks:
       - ms-network
 
-  next-frontend:
-    build:
-      context: ./nextjs-frontend
-      dockerfile: Dockerfile
-    container_name: next-frontend
-    environment:
-      - NODE_ENV=production
-      - API_BASE_URL=http://api-gateway:8080
-    depends_on:
-      - api-gateway
-    ports:
-      - "3000:3000"
-    networks:
-      - ms-network
-
   user-authentication:
     build:
       context: ./user-authentication
@@ -209,6 +194,21 @@ services:
       - ad-package-db
       - rabbitmq
       - eureka-server
+    networks:
+      - ms-network
+
+  next-frontend:
+    build:
+      context: ./nextjs-frontend
+      dockerfile: Dockerfile
+    container_name: next-frontend
+    environment:
+      - NODE_ENV=production
+      - API_BASE_URL=http://api-gateway:8080
+    depends_on:
+      - api-gateway
+    ports:
+      - "3000:3000"
     networks:
       - ms-network
 
